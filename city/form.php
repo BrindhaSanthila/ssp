@@ -1,4 +1,5 @@
 
+
 <style>
 .dt-buttons{
 	display:none;
@@ -13,6 +14,7 @@
 .img_staff { height:80px; border-radius:10px;}
 </style>
 <?php
+
 		$city_name		    	= '';
 		$active_status			= '';
 		

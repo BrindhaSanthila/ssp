@@ -8,6 +8,7 @@ function labourcreation_cu(labour_id,action)
 	var action_type = "SUBMIT";
 	
 	
+	
 	if(action=="Add" || action=="Update" )
 	{
 			

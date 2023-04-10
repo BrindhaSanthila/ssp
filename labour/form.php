@@ -5,6 +5,7 @@
 }
 .dataTables_paginate{
 	display:none;
+	
 }
 .dataTables_info{
 	display:none;

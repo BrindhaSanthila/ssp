@@ -5,6 +5,7 @@
   </h1>	  
 </section>
 
+
 <?php 
   $select_purchaseentry = $pdo_conn->prepare("SELECT * FROM labour_creation ORDER BY labour_id DESC");
   $select_purchaseentry->execute();
