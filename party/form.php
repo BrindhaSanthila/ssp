@@ -44,6 +44,8 @@
 		$credit_days		= $mainlist[0]['credit_days'];
 		$auto_sms		    = $mainlist[0]['auto_sms'];
 		$active_status		= $mainlist[0]['active_status'];
+		$area_name		= $mainlist[0]['area_name'];
+		$city_name		= $mainlist[0]['city_name'];
 		
 	}
 
@@ -114,7 +116,53 @@
 										</div>
 								</div>
 							</div>
+							<div class="col-md-12 col-lg-8 ">
+								<div class="form-group">
+									   <h5>Area Name</h5>
+									   <div class="controls">
+										 <select class="form-control select2 area_name" multiple name="area_name" id="area_name"  onchange="get_city_name();"><?php 
+										 $select_area=$pdo_conn->prepare("SELECT * FROM area_creation where active_status='Active'");
+											$select_area->execute();
+											$area_type = $select_area->fetchAll();?>
+											<option>Select</option> 
+											<?php foreach ($area_type as $value) {
+												if($_GET['party_id']!=''){
+											$area_name_options = explode(',',$area_name);
+                                                  ?>
+                                        <option value="<?php echo $value['area_id']?>" <?php if (in_array($value['area_id'], $area_name_options)){ echo "selected";} ?>><?php echo $value['area_name'];?></option> 											
+											<?php } else {
+                                                    ?>
+                                        <option value="<?php echo $value['area_id']?>" ><?php echo $value['area_name'];?></option> 												
+											<?php }
+											} ?> 
+                                             </select>
+										</div>
+								</div>
+							</div> 
+	<div class="col-md-12 col-lg-8 ">
+								<div id="city_val_get">
+								<div class="form-group">
+									   <h5>City Name</h5>
+									   <div class="controls">
+										 <select class="form-control select2 city_name"  multiple name="city_name" id="city_name" ><?php 
+										 $select_city=$pdo_conn->prepare("SELECT * FROM city_creation where active_status='Active'");
+											$select_city->execute();
+											$city_type = $select_city->fetchAll();?>
+											<option>Select</option> 
+											<?php foreach ($city_type as $value) {
+												if($_GET['party_id']==''){  ?>
+												<option value="<?php echo $value['city_id'];?>"><?php echo $value['city_name'];?></option>
+												
+											<?php } else{ $city_name_options = explode(',',$city_name); ?>
+												<option value="<?php echo $value['city_id'];?>" <?php if (in_array($value['city_id'], $city_name_options)){ echo "selected";} ?>><?php echo $value['city_name'];?></option>
+												
+											<?php } 
+										}?></select>
+										</div>
+								</div>
 
+							</div> 
+						</div>
 							<div class="col-md-12 col-lg-8 ">
 								<div class="form-group">
 									   <h5>Accounts No</h5>
@@ -211,16 +259,13 @@
 								<div class="form-group">
 									   <h5>Payment Type</h5>
 									  
-									   <div class="controls">
+									 <div class="controls">
 									   <select name="paymenttype" id="paymenttype"  class="form-control select2 item_name" required>
 										<option value="">Select Party Type</option>		
-										<?php 
-										if($updateresult == ''){
-											?>							
-											<option value="Credit" >Credit</option>				
-											<?php } else { ?>
-											<option value="Credit" <?php if($updateresult[0]['paymenttype'] == 'Credit'){ echo "selected";} ?>>Credit</option>					
-											<?php }	?>			
+									
+										
+											<option value="Credit" <?php if($paymenttype== 'Credit'){ echo "selected";} ?>>Credit</option>					
+														<option value="Cash" <?php if($paymenttype== 'Cash'){ echo "selected";} ?>>Cash</option>	
 										</select>
 										</div>
 								</div>
@@ -311,6 +356,26 @@
 	
  });
 	
+	function get_city_name(){
+		var area_name = [];  
+   	jQuery.each(jQuery('.area_name option:selected'), function() {
+		area_name.push(jQuery(this).val()); 
+    });
+   
+    var area_name=area_name.toString();
+    //alert(area_name);
+		jQuery.ajax({
+			type: "POST",
+			url: "party/city_name.php",
+			data:"area_name="+area_name,
+			success: function(msg){
+				
+				$('#city_val_get').html(msg);
+				$('.city_name').select2();
+				//window.location="index.php?file=staff/list";
+			}
+		});
+	}
 	
 function filladd()
 {

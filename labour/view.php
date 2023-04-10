@@ -74,7 +74,7 @@ error_reporting(0);
     </tr>
     <tr>
     <td>Working Place</td>
-    <td style="font-weight: 100;"><?php echo get_quary($mainlist[0]['working_place']); ?></td>
+    <td style="font-weight: 100;"><?php echo $mainlist[0]['working_place']; ?></td>
     </tr>
     <tr>
     <td>Crusher Place</td>

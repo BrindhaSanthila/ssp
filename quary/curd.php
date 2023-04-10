@@ -11,10 +11,10 @@ switch($action)
 case "SUBMIT":
 
  
-	$sql = "INSERT INTO `quary_creation`(`quary_name`, `remarks`, `working_place`, `active_status`, `created_employee_id`) VALUES (:quary_name, :remarks, :working_place, :active_status, :employee_id)";		
+	$sql = "INSERT INTO `quary_creation`(`quary_name`, `remarks`, `working_place`, `active_status`, `created_employee_id`,`quary_crusher`) VALUES (:quary_name, :remarks, :working_place, :active_status, :employee_id,:quary_crusher)";		
 	$pdo_statement = $pdo_conn->prepare($sql);					
 	$result = $pdo_statement->execute(array(
-			':quary_name'=>$_POST['quary_name'],':remarks'=>$_POST['remarks'], ':working_place'=>$_POST['working_place'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id']));
+			':quary_name'=>$_POST['quary_name'],':remarks'=>$_POST['remarks'], ':working_place'=>$_POST['working_place'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id'],':quary_crusher'=>$_POST['quary_crusher']));
  	
 	if (!empty($result) ){
 		echo "Successfully Created";
@@ -28,7 +28,7 @@ break;
 
 case "UPDATE":
 
-	$staff_statement =$pdo_conn->prepare("UPDATE quary_creation SET quary_name='".$_POST['quary_name']."',remarks='".$_POST['remarks']."',working_place='".$_POST['working_place']."',active_status='".$_POST['active_status']."',updated_employee_id='".$_SESSION['employee_id']."' WHERE quary_id='".$_POST['quary_id']."' ");
+	$staff_statement =$pdo_conn->prepare("UPDATE quary_creation SET quary_name='".$_POST['quary_name']."',remarks='".$_POST['remarks']."',working_place='".$_POST['working_place']."',active_status='".$_POST['active_status']."',quary_crusher='".$_POST['quary_crusher']."',updated_employee_id='".$_SESSION['employee_id']."' WHERE quary_id='".$_POST['quary_id']."' ");
 	$staff_up =$staff_statement->execute();
 		
 	if($staff_up) {		

@@ -28,13 +28,26 @@ function party_cu(party_id,action)
 			form_data.append("credit_days", $("#credit_days").val());
 			form_data.append("auto_sms", $("input[type='radio'][name='auto_sms']:checked").val());		
 			form_data.append("active_status", $("#active_status").val());
+			form_data.append("area_name", $("#area_name").val());
+			form_data.append("city_name", $("#city_name").val());
 			
 		}
 
 		if(action=="Update"){
 			action_type = "UPDATE";
 		}
-
+var area_name = [];  
+   	jQuery.each(jQuery('.area_name option:selected'), function() {
+		area_name.push(jQuery(this).val()); 
+    });
+   
+   var area_name=area_name.toString();
+   var city_name = [];  
+   	jQuery.each(jQuery('.city_name option:selected'), function() {
+		city_name.push(jQuery(this).val()); 
+    });
+   
+   var city_name=city_name.toString();
 	var party_name = $("#party_name").val();
 	var mobile_no = $("#mobile_no").val();
 	var address = $("#address").val();

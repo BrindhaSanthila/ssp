@@ -26,6 +26,8 @@
 		$remarks		    = $mainlist[0]['remarks'];
 		$working_place		= $mainlist[0]['working_place'];
 		$active_status		= $mainlist[0]['active_status'];
+				$quary_crusher		= $mainlist[0]['quary_crusher'];
+
 		
 	}
 
@@ -69,10 +71,21 @@
 				<div class="box-body">
 					<form class="was-validated" name="staffentry" autocomplete="off">
 						<div class="row">					
-
+<div class="col-md-12 col-lg-8 ">
+								<div class="form-group">
+									   <h5>Quary / Crusher </h5>
+									   <div class="controls">
+											<select name="quary_crusher" id="quary_crusher"  class="form-control">
+												<option value="">Select</option>
+												<option value="Quary" <?php if($quary_crusher=='Quary'){ ?> selected <?php } ?>>Quary</option>
+												<option value="Crusher"  <?php if($quary_crusher=='Crusher'){ ?> selected <?php } ?>>Crusher</option>
+											</select>
+										</div>
+								</div>
+							</div>	
 						<div class="col-md-12 col-lg-8 ">
 								<div class="form-group">
-									   <h5>Quary Name</h5>
+									   <h5>Quary / Crusher  Name</h5>
 									   <div class="controls">
 											<input type="text" name="quary_name" id="quary_name" value="<?php echo $quary_name ?>" class="form-control" onchange="validation(this.id)" >
 										</div>

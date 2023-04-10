@@ -34,8 +34,8 @@ include '../inc/header.php';
             <td><?php echo $roll_id;?></td>
             <td><?php echo $value['material_name'];?></td>
             <td><?php echo get_unit($value['unit']);?></td>
-            <td><?php echo $value['alt_unit'];?></td>
-            <td><?php echo $value['production_from'];?></td>
+            <td><?php echo get_unit($value['alt_unit']);?></td>
+            <td><?php echo get_quary($value['production_from']);?></td>
           
           </tr>
   <?php   $roll_id++;

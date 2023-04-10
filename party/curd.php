@@ -4,20 +4,20 @@ include('../inc/dbConnect.php');
 include('../inc/commonfunction.php');
 session_start();
 $action = $_GET['action'];
- 
 /************************************* INSERT ********************************************/
 
 switch($action)
 { 	
 case "SUBMIT":
 
-		$sql = "INSERT INTO `party_creation`(`party_name`, `mobile_no`, `address`, `accounts_no`, `partytype`, `comp_name`, `person_name`, `contact_mob_no`, `gst_no`, `paymenttype`, `credit_days`, `auto_sms`, `active_status`, `created_employee_id`) VALUES (:party_name, :mobile_no, :address, :accounts_no, :partytype, :comp_name, :person_name, :contact_mob_no, :gst_no, :paymenttype, :credit_days, :auto_sms, :active_status, :employee_id)";		
+		$sql = "INSERT INTO `party_creation`(`party_name`, `mobile_no`, `address`, `accounts_no`, `partytype`, `comp_name`, `person_name`, `contact_mob_no`, `gst_no`, `paymenttype`, `credit_days`, `auto_sms`, `active_status`, `created_employee_id`, `area_name`, `city_name`) VALUES (:party_name, :mobile_no, :address, :accounts_no, :partytype, :comp_name, :person_name, :contact_mob_no, :gst_no, :paymenttype, :credit_days, :auto_sms, :active_status, :employee_id, :area_name, :city_name)";		
 		$pdo_statement = $pdo_conn->prepare($sql);					
 		$result = $pdo_statement->execute(array(
-				':party_name'=>$_POST['party_name'],':mobile_no'=>$_POST['mobile_no'], ':address'=>$_POST['address'], ':accounts_no'=>$_POST['accounts_no'], ':partytype'=>$_POST['partytype'], ':comp_name'=>$_POST['comp_name'], ':person_name'=>$_POST['person_name'], ':contact_mob_no'=>$_POST['contact_mob_no'], ':gst_no'=>$_POST['gst_no'], ':paymenttype'=>$_POST['paymenttype'], ':credit_days'=>$_POST['credit_days'], ':auto_sms'=>$_POST['auto_sms'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id']));
+				':party_name'=>$_POST['party_name'],':mobile_no'=>$_POST['mobile_no'], ':address'=>$_POST['address'], ':accounts_no'=>$_POST['accounts_no'], ':partytype'=>$_POST['partytype'], ':comp_name'=>$_POST['comp_name'], ':person_name'=>$_POST['person_name'], ':contact_mob_no'=>$_POST['contact_mob_no'], ':gst_no'=>$_POST['gst_no'], ':paymenttype'=>$_POST['paymenttype'], ':credit_days'=>$_POST['credit_days'], ':auto_sms'=>$_POST['auto_sms'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id'], ':area_name'=>$_POST['area_name'], ':city_name'=>$_POST['city_name']));
  	
 	if (!empty($result) ){
 		echo "Successfully Created";
+		
 	}else { 
 		print_r($pdo_statement->errorinfo());
 	}
@@ -28,7 +28,7 @@ break;
 
 case "UPDATE":
 
-	$staff_statement =$pdo_conn->prepare("UPDATE `party_creation` SET `party_name`='".$_POST['party_name']."', `mobile_no`='".$_POST['mobile_no']."', `address`='".$_POST['address']."', `accounts_no`='".$_POST['accounts_no']."', `partytype`='".$_POST['partytype']."', `comp_name`='".$_POST['comp_name']."', `person_name`='".$_POST['person_name']."', `contact_mob_no`='".$_POST['contact_mob_no']."', `gst_no`='".$_POST['gst_no']."', `paymenttype`='".$_POST['paymenttype']."', `credit_days`='".$_POST['credit_days']."', `auto_sms`='".$_POST['auto_sms']."', `active_status`='".$_POST['active_status']."', `updated_employee_id`='".$_SESSION['employee_id']."' WHERE `party_id`='".$_GET['party_id']."'");
+	$staff_statement =$pdo_conn->prepare("UPDATE `party_creation` SET `party_name`='".$_POST['party_name']."', `mobile_no`='".$_POST['mobile_no']."', `address`='".$_POST['address']."', `accounts_no`='".$_POST['accounts_no']."', `partytype`='".$_POST['partytype']."', `comp_name`='".$_POST['comp_name']."', `person_name`='".$_POST['person_name']."', `contact_mob_no`='".$_POST['contact_mob_no']."', `gst_no`='".$_POST['gst_no']."', `paymenttype`='".$_POST['paymenttype']."', `credit_days`='".$_POST['credit_days']."', `auto_sms`='".$_POST['auto_sms']."', `active_status`='".$_POST['active_status']."', `updated_employee_id`='".$_SESSION['employee_id']."', `area_name`='".$_POST['area_name']."', `city_name`='".$_POST['city_name']."' WHERE `party_id`='".$_GET['party_id']."'");
 	$staff_up =$staff_statement->execute();
 		
 	if($staff_up) {		

@@ -28,6 +28,7 @@ function materialcreation_cu(material_id,action)
 
 	var material_name = $("#material_name").val();
 	var unit = $("#unit").val();
+		var alt_unit = $("#alt_unit").val();
 	var production_from = $("#production_from").val();
 
 	if(material_name=='')
@@ -46,6 +47,18 @@ else if(production_from=='')
 {
 	alert('Please Enter the material production from');
 	$("#production_from").focus();
+
+}
+else if (alt_unit=='')
+	{
+		alert('Please select the unit of Measurement');
+		$("#alt_unit").focus();
+
+	}
+	else if(unit==alt_unit)
+{
+	alert('Please select alternative units');
+	$("#alt_unit").focus();
 
 }
 else {

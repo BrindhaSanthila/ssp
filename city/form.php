@@ -22,6 +22,8 @@
 	$mainlist = $main_list->fetchAll();	
 		$city_name		    	= $mainlist[0]['city_name'];
 		$active_status			= $mainlist[0]['active_status'];
+		$update_area_name=$mainlist[0]['area_id'];
+		$apprx_km=$mainlist[0]['apprx_km'];
 		
 	}
 
@@ -68,30 +70,20 @@
 
 						<div class="col-md-12 col-lg-8 ">
 						<div class="form-group">
-									   <h5>Select Area</h5>
-									   <?php
-											$select_area=$pdo_conn->prepare("SELECT * FROM area_creation WHERE active_status='Active'");
-											$select_area->execute();
-											$area = $select_area->fetchAll();
-										?>	
+									   <h5>Area Name</h5>
 									   <div class="controls">
-									   <select name="area_id" id="area_id"  class="form-control select2 item_name" required>
-										<option value="">Select Area</option>
-										<?php 
-										foreach($area as $value)
-										{
-											
-											if($updateresult == ''){?>
-												<option value="<?php echo $value['area_id']?>"><?php echo $value['area_name'];?></option>
-											<?php }else{ ?>
-											<option value="<?php echo $value['area_id']?>" <?php if($updateresult[0]['area_id'] == $value['area_id']){ echo "selected";} ?>><?php echo $value['area_name'];?></option>
-											
-											<?php 
-										}}
-										?>
-										</select>
+											<select name="area_id" id="area_id"  class="form-control select2">
+												<option value=''>Select</option>
+												<?php  $area_list = $pdo_conn->prepare("SELECT * FROM area_creation WHERE active_status ='Active'");
+	                                                   $area_list->execute();
+	                                                   $arealist = $area_list->fetchAll();
+												foreach ($arealist as  $area_val) {?>
+													<option value="<?php echo $area_val[area_id];?>" <?php if($update_area_name==$area_val[area_id]){?>selected <?php } ?>><?php echo $area_val['area_name'];?></option>
+												<?php }?>
+											</select>
 										</div>
-									</div>
+								
+							</div>
 									</div>
 						
 						<div class="col-md-12 col-lg-8 ">
@@ -103,14 +95,14 @@
 								</div>
 							</div>
 
-							<div class="col-md-12 col-lg-8 ">
+							 <div class="col-md-12 col-lg-8 ">
 								<div class="form-group">
-									   <h5>Apprx km</h5>
+									   <h5>Approximate Km</h5>
 									   <div class="controls">
-											<input type="text" name="apprx_km" id="apprx_km" value="<?php echo $apprx_km ?>" class="form-control" >
+											<input type="text" name="apprx_km" id="apprx_km" value="<?php echo $apprx_km ?>" class="form-control"  >
 										</div>
 								</div>
-							</div>													
+							</div>												
 
 							<div class="col-lg-8 col-md-12 ">
 									<h5>Status</h5>

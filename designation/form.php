@@ -77,9 +77,25 @@
 
 							<div class="col-md-12 col-lg-8 ">
 								<div class="form-group">
-									   <h5>Reporting To</h5>
-									   <div class="controls">
-											<input type="text"  name="reporting_to" id="reporting_to"  class="form-control"  value="<?php echo $reporting_to ?>" onchange="validation(this.id)"  >
+									   <h5>Reporting To</h5><div class="controls">
+									   <select name="reporting_to" id="reporting_to"  class="form-control select2 " >
+										<option value="">Select</option>
+										<?php 
+											$select_desig=$pdo_conn->prepare("SELECT * FROM designation_creation");
+											$select_desig->execute();
+											$designation_type = $select_desig->fetchAll();
+	
+										foreach($designation_type as $value)
+										{
+											?>
+											<option value="<?php echo $value['designation_name']?>" <?php if($reporting_to== $value['designation_name']){ echo "selected";} ?>><?php echo $value['designation_name'];?></option>
+											
+											<?php 
+										}
+										?>
+										</select>
+									   
+											
 										</div>
 								</div>
 							</div>

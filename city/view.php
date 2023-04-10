@@ -57,8 +57,17 @@ error_reporting(0);
 <table width="100%" id="table3">
     
     <tr>
+    <td>Area Name</td>
+    <td style="font-weight: 100;"> <?php echo  get_area_name($mainlist[0]['area_id']); ?></td>
+    </tr>
+    <tr>
+    <tr>
     <td>City Name</td>
     <td style="font-weight: 100;"> <?php echo $mainlist[0]['city_name']; ?></td>
+    </tr>
+    <tr>
+    <td>Approximate Km</td>
+    <td style="font-weight: 100;"> <?php echo $mainlist[0]['apprx_km']; ?></td>
     </tr>
     <tr>
     <td>Status</td>

@@ -43,8 +43,8 @@
 							<td><?php echo $roll_id;?></td>
 							<td><?php echo $value['material_name'];?></td>
 							<td><?php echo get_unit($value['unit']);?></td>
-							<td><?php echo $value['alt_unit'];?></td>
-              				<td><?php echo $value['production_from'];?></td>
+							<td><?php echo get_unit($value['alt_unit']);?></td>
+              				<td><?php echo get_quary($value['production_from']);?></td>
               <td><?php echo $value['active_status'];?></td>
                            <td> 
 						  <a href="#" title="View" id="staff_view_modal" onclick="material_view_modal('material/view.php','<?php echo $value['material_id'];?>')" data-toggle="modal" data-target="#staff_view"><i class="fa fa-eye" aria-hidden="true"></i></a>

@@ -15,7 +15,8 @@ include '../inc/header.php';
         <thead>
           <tr class="bold">
           <th class="th_div">#</th>
-          <th class="th_div">Quary Name</th>
+           <th class="th_div">Quary / Crusher</th>
+          <th class="th_div">Quary / Crusher Name</th>
           <th class="th_div">Remarks</th>
           <th class="th_div">Consider as Working Place</th>
           <th class="th_div">Status</th>
@@ -32,6 +33,7 @@ include '../inc/header.php';
           <tr>
           
             <td><?php echo $roll_id;?></td>
+            <td><?php echo $value['quary_crusher'];?></td>
             <td><?php echo $value['quary_name'];?></td>
             <td><?php echo $value['remarks'];?></td>
             <td><?php echo $value['working_place'];?></td>

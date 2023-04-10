@@ -64,13 +64,13 @@ error_reporting(0);
     <td>Unit of Measurement</td>
     <td style="font-weight: 100;"><?php echo get_unit($mainlist[0]['unit']); ?></td>
     </tr>
-    <tr>
+     <tr>
     <td>Alternative Unit</td>
-    <td style="font-weight: 100;"><?php echo $mainlist[0]['alt_unit']; ?></td>
+    <td style="font-weight: 100;"><?php echo get_unit($mainlist[0]['alt_unit']); ?></td>
     </tr>
     <tr>
     <td>Material Production From</td>
-    <td style="font-weight: 100;"><?php echo $mainlist[0]['production_from']; ?></td>
+    <td style="font-weight: 100;"><?php echo get_quary($mainlist[0]['production_from']); ?></td>
     </tr>
     <tr>
     <td>Status</td>

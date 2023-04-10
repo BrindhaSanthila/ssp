@@ -28,7 +28,9 @@
 					<thead>
 						<tr class="bold">
 							<th>#</th>
+							<th>Area Name</th>
 							<th>City Name</th>
+							<th>Approximate Km</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -38,7 +40,9 @@
 						?>
                           <tr>
 							<td><?php echo $roll_id;?></td>
+							<td><?php echo get_area_name($value['area_id']);?></td>
 							<td><?php echo $value['city_name'];?></td>
+							<td><?php echo $value['apprx_km'];?></td>
               				<td><?php echo $value['active_status'];?></td>
                            <td> 
 						  <a href="#" title="View" id="staff_view_modal" onclick="city_view_modal('city/view.php','<?php echo $value['city_id'];?>')" data-toggle="modal" data-target="#staff_view"><i class="fa fa-eye" aria-hidden="true"></i></a>

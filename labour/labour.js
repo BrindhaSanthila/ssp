@@ -6,12 +6,7 @@ function labourcreation_cu(labour_id,action)
 	
 	
 	var action_type = "SUBMIT";
-	var working_place = [];  
-   	jQuery.each(jQuery('.working_place option:selected'), function() {
-		working_place.push(jQuery(this).val()); 
-    });
-   
-    var working_place=working_place.toString();
+	
 	
 	if(action=="Add" || action=="Update" )
 	{
@@ -23,7 +18,7 @@ function labourcreation_cu(labour_id,action)
 			form_data.append("mobile_no", $("#mobile_no").val());
 			form_data.append("address", $("#address").val());
 			form_data.append("labour_dob", $("#labour_dob").val());
-			form_data.append("working_place", working_place);
+			form_data.append("working_place", $("#working_place").val());
 			form_data.append("crusher_place", $("#crusher_place").val());			
 			form_data.append("active_status", $("#active_status").val());
 			form_data.append("labour_id", labour_id);
