@@ -1,0 +1,87 @@
+<script src="assets/vendor_components/jquery/dist/jquery.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<body class="hold-transition bg-img" style="background-image: url(images/main-home-slide-2.jpg); background-size: cover; background-position: center;" data-overlay="4">
+<div class="login-bg">
+<div class="row">
+<div class="col-md-12 col-xs-6 col-sm-6 col-lg-12">
+<div class="loginpages">
+<center>
+<form method="post">
+<img src="images/rpplogo.png" width="14%">
+<!--<h4 class="log-in">Login</h4>-->
+<hr style="border-color:#eee;">
+<!-- <select id="user_type" name="user_type" class="form-control txt" style="text-align:center" required>
+<option value=""> <center>Login As</center> </option>
+<option value="1"> <center>Admin</center> </option>
+<option value="staff"><center>Office Staff</center></option>
+</select> -->
+<input type="text" id="login_name" class="form-control txt" placeholder="Username" required>
+<input type="password" id="login_password" class="form-control txt" placeholder="Password" required>
+<hr style="border-color:#eee;">
+<button class="btn btn-sign btn-block margin-top-10" type="submit" onclick="login()">SIGN IN</button>
+</form>
+</center>
+</div>
+</div>
+</div>
+</div>
+</body>
+<style>
+.lock
+{
+	background-color:#929397 !important;
+	border:1px solid #929397 !important; 
+}
+.btn-sign
+{
+	background-color:#d32800 !important;
+	border:1px solid #fff !important;
+	font-weight:600;
+}
+.btn-sign:hover
+{
+	background-color:#020d38 !important;
+}
+[data-overlay], [data-overlay-light] {
+    position: inherit;
+}
+.loginpages{
+	margin-top:30px;
+}
+.txt {
+    margin-top: 22px;
+	text-align:left;
+}
+.btn-sign{
+	width:36%;
+	border-radius: 7px;
+    padding: 10px;
+}
+hr {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem;
+}
+</style>
+<script>
+function login()
+{
+login_name=document.getElementById("login_name").value;	
+login_password=document.getElementById("login_password").value;
+// user_type=document.getElementById("user_type").value;
+if(login_name!='' & login_password!='')	
+{
+		$.ajax({
+			
+		    'async': false,
+			type: "POST",
+			url: "inc/checklogins.php",
+			data: {login_name : login_name,login_password : login_password,action : 'Check-Login'},
+			success: function(msg)
+			{
+			// alert(msg); 			
+				window.location.href="index.php";
+			}});
+	}	
+}
+
+</script>

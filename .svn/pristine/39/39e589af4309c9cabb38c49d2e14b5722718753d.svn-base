@@ -1,0 +1,36 @@
+<?php 
+
+	require_once('../inc/dbConnect.php');
+	session_start();
+	session_id();
+	$login_name = $_POST['login_name'];
+	$login_password = $_POST['login_password'];
+	$user_type = $_POST['user_type'];
+	
+
+	$select_usercreation=$pdo_conn->prepare("SELECT * FROM user_creation WHERE user_name='$login_name' AND password='$login_password' AND userroll='$user_type' AND active_status='Active'");
+	$select_usercreation->execute();
+	$checklogin = $select_usercreation->fetchAll();
+
+	if(!empty($checklogin)) 
+	{
+		foreach($checklogin as $value) 
+		{
+
+			$select_empcreation=$pdo_conn->prepare("SELECT * FROM employee_creation WHERE employee_name = '".$value['employee_name']."' AND employee_id = '".$value['password']."' AND active_status='Active'");
+			$select_empcreation->execute();
+			$emp = $select_empcreation->fetchAll();
+
+			$_SESSION['employee_id'] = $emp[0]['emp_id'];
+			$_SESSION['user_id'] = $value['user_id'];
+			$_SESSION['employee_name'] = $value['employee_name'];
+			$_SESSION['user_roll'] = $value['userroll'];			
+		} 
+		echo "Success";
+	}
+	else
+	{
+		echo "Check Login Details";
+	}	
+	
+?>

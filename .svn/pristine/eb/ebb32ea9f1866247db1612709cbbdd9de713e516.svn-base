@@ -1,0 +1,9 @@
+[24-Aug-2020 15:45:00 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/sa12wdnthila/public_html/royal_crm/enquiry/order_view.php on line 102
+[24-Aug-2020 15:45:06 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/sa12wdnthila/public_html/royal_crm/enquiry/order_view.php on line 102
+[20-Apr-2022 05:21:46 UTC] PHP Parse error:  syntax error, unexpected '$pdf_view' (T_VARIABLE), expecting ',' or ';' in /home/royalfurn/public_html/royal_crm/enquiry/file_upload_subllist.php on line 19
+[30-Apr-2022 06:16:44 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 111
+[30-Apr-2022 06:16:46 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 111
+[30-Apr-2022 06:17:23 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 703
+[30-Apr-2022 06:17:26 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 703
+[30-Apr-2022 06:24:35 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 117
+[30-Apr-2022 06:24:38 UTC] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/royalfurn/public_html/royal_crm/enquiry/curd.php on line 117
