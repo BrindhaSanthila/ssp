@@ -17,6 +17,7 @@ case "SUBMIT":
  	
 	if (!empty($result) ){
 		echo "Successfully Created";
+		
 	}else { 
 		print_r($pdo_statement->errorinfo());
 	}
