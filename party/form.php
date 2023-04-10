@@ -28,6 +28,36 @@
 		$auto_sms		    = '';
 		$active_status		= '';
 		
+
+			$date=date("Y");  
+$st_date=substr($date,2);
+$month=date("m");	
+$datee=$st_date.$month; 
+		if($_GET['party_id']=='')
+{
+	$rs1=$pdo_conn->prepare("select * from  party_creation  where party_id!='' order by party_id desc limit 1");
+  $rs1->execute();
+  if($res1=$rs1->fetch(PDO::FETCH_ASSOC))
+  {
+		$pur_array=explode('-',$res1['accounts_no']);
+
+		$year1=$pur_array[1];
+		$year2=substr($year1, 0, 2);
+		$year='20'.$year2;
+		$reg_no=$pur_array[2];
+	}
+	if($reg_no=='')
+		$accounts_no='PA-'.$datee.'-0001';
+	elseif($year!=date("Y"))
+		$accounts_no='PA-'.$datee.'-0001';
+	else 
+	{
+		$reg_no+=1;
+		$accounts_no='PA-'.$datee.'-'.str_pad($reg_no, 4, '0', STR_PAD_LEFT);
+	}
+} 
+
+
 	if(isset($_GET['party_id'])){
 	$main_list = $pdo_conn->prepare("SELECT * FROM party_creation WHERE party_id ='".$_GET['party_id']."'");
 	$main_list->execute();
@@ -168,7 +198,7 @@
 								<div class="form-group">
 									   <h5>Accounts No</h5>
 									   <div class="controls">
-											<input type="text" name="accounts_no" id="accounts_no" value="<?php echo $accounts_no ?>" class="form-control" onchange="validation(this.id)"  >
+											<input type="text" name="accounts_no" id="accounts_no" READONLY value="<?php echo $accounts_no ?>" class="form-control" onchange="validation(this.id)"  >
 										</div>
 								  </div>
 							</div>
