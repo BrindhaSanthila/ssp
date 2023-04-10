@@ -116,32 +116,17 @@
 								<div class="form-group">
 									   <h5>Working Place</h5>
 									   <div class="controls">
-									   <?php
-											$select_quary=$pdo_conn->prepare("SELECT * FROM quary_creation WHERE working_place = 'Yes' AND active_status='Active'");
-											$select_quary->execute();
-											$quary = $select_quary->fetchAll();
-										?>	
-									   <select name="working_place" id="working_place"  class="form-control select2 working_place" multiple required>
-										<option value="">Select Working Place</option>
-										<?php 
-										foreach($quary as $value)
-										{											
-											if($updateresult == ''){?>
-												<option value="<?php echo $value['quary_id']?>"><?php echo $value['quary_name'];?></option>
-											<?php }else{ 
-												$quary_options = explode(',',$updateresult[0]['working_place']);
-											?>
-											<option value="<?php echo $value['quary_id']?>" <?php if (in_array($value['quary_id'], $quary_options)){ echo "selected";} ?>><?php echo $value['quary_name'];?></option>
-											
-											<?php 
-										}}
-										?>
+									   
+									   <select name="working_place" id="working_place"  class="form-control select2"  onchange="hide_crusher_val(working_place.value);">
+										<option value="">Select</option>
+												<option value="Quary" <?php if($working_place=='Quary'){ ?> selected <?php } ?>>Quary</option>
+												<option value="Crusher"  <?php if($working_place=='Crusher'){ ?> selected <?php } ?>>Crusher</option>
 										</select>
 										</div>
 								</div>
 							</div>
 
-							<div class="col-md-12 col-lg-8 ">
+							<div class="col-lg-8 col-md-12  "><div id="hide_crusher">
 								<div class="form-group">
 									   <h5>Crusher Place</h5>
 									   <div class="controls">
@@ -149,6 +134,8 @@
 										</div>
 								</div>
 							</div>
+						</div>
+
 
 							<div class="col-lg-8 col-md-12 ">
 									<h5>Status</h5>
@@ -210,7 +197,15 @@
 	
  });
 	
-	
+	function hide_crusher_val(crusher_quary)
+	{
+		if(crusher_quary=='Quary')
+		{
+			$("#hide_crusher").hide();
+		}else{$("#hide_crusher").show();
+
+		}
+	}
 function filladd()
 {
 	 if(same_address.checked == true) 

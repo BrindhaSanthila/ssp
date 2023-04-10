@@ -4,16 +4,15 @@ include('../inc/dbConnect.php');
 include('../inc/commonfunction.php');
 session_start();
 $action = $_GET['action'];
- 
 /************************************* INSERT ********************************************/
 switch($action)
 { 	
 case "SUBMIT":
 
-	$sql = "INSERT INTO `city_creation`(`city_name`, `active_status`, `created_employee_id`) VALUES (:city_name, :active_status, :employee_id)";		
+	$sql = "INSERT INTO `city_creation`(`city_name`, `active_status`, `created_employee_id`,`area_id`,`apprx_km`) VALUES (:city_name, :active_status, :employee_id, :area_id, :apprx_km)";		
 	$pdo_statement = $pdo_conn->prepare($sql);					
 	$result = $pdo_statement->execute(array(
-			':city_name'=>$_POST['city_name'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id']));
+			':city_name'=>$_POST['city_name'], ':active_status'=>$_POST['active_status'], ':employee_id'=>$_SESSION['employee_id'], ':area_id'=>$_POST['area_id'], ':apprx_km'=>$_POST['apprx_km']));
  	
 	if (!empty($result) ){
 		echo "Successfully Created";
@@ -28,7 +27,7 @@ break;
 case "UPDATE":
  
 
-	$staff_statement =$pdo_conn->prepare("UPDATE city_creation SET city_name='".$_POST['city_name']."',active_status='".$_POST['active_status']."',updated_employee_id='".$_SESSION['employee_id']."' WHERE city_id='".$_POST['city_id']."' ");
+	$staff_statement =$pdo_conn->prepare("UPDATE city_creation SET city_name='".$_POST['city_name']."',active_status='".$_POST['active_status']."',updated_employee_id='".$_SESSION['employee_id']."',area_id='".$_POST['area_id']."',apprx_km='".$_POST['apprx_km']."'  WHERE city_id='".$_POST['city_id']."' ");
 	$staff_up =$staff_statement->execute();
 		
 	if($staff_up) {		

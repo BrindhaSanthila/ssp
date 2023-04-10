@@ -1,7 +1,7 @@
 <section class="content-header">
 	<h1>
     <small>Manage</small>
-  	<?php echo ucfirst($foldername); ?><a href="index.php?file=quary/create" class="float-right btn-sm btn-primary">Add New</a>
+  	<?php echo ucfirst($foldername) ." / Crusher" ; ?><a href="index.php?file=quary/create" class="float-right btn-sm btn-primary">Add New</a>
   </h1>	  
 </section>
 
@@ -28,7 +28,8 @@
 					<thead>
 						<tr class="bold">
 							<th>#</th>
-							<th>Quary Name</th>
+							<th>Quary / Crusher </th>
+							<th>Quary / Crusher Name</th>
 							<th>Remarks</th>
 							<th>Consider as Working Place</th>
 							<th>Status</th>
@@ -40,6 +41,7 @@
 						?>
                           <tr>
 							<td><?php echo $roll_id;?></td>
+							<td><?php echo $value['quary_crusher'];?></td>
 							<td><?php echo $value['quary_name'];?></td>
 							<td><?php echo $value['remarks'];?></td>
 							<td><?php echo $value['working_place'];?></td>

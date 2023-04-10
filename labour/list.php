@@ -47,7 +47,7 @@
 							<td><?php echo $value['mobile_no'];?></td>
 							<td><?php echo $value['address'];?></td>
               				<td><?php echo date('d-m-Y', strtotime($value['labour_dob']));?></td>
-							<td><?php echo get_quary($value['working_place']);?></td>
+							<td><?php echo $value['working_place'];?></td>
 							<td><?php echo $value['crusher_place'];?></td>
               				<td><?php echo $value['active_status'];?></td>
                            <td> 

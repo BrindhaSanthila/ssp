@@ -2,7 +2,7 @@
     <section class="content-header">
       <h1>
 		<small>Update</small>
-		<?php echo ucfirst($foldername); ?>        
+		<?php echo ucfirst($foldername) ." / Crusher" ; ?>        
       </h1>
 	  
       <ol class="breadcrumb">

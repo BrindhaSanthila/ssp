@@ -12,7 +12,8 @@ function quarycreation_cu(quary_id,action)
 			
           //  alert(file_data);	
 			var form_data = new FormData();
-			
+						form_data.append("quary_crusher", $("#quary_crusher").val());
+
 			form_data.append("quary_name", $("#quary_name").val());
 			form_data.append("remarks", $("#remarks").val());
 			form_data.append("working_place", $("input[type='radio'][name='working_place']:checked").val());			

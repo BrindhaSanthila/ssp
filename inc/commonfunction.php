@@ -278,7 +278,14 @@ function get_staff_type($staff_type)
 // 		$pdoproject_name = $pdo_project_pos->fetch();
 // 		return $pdoproject_name['expense_name'];
 // }
-
+function get_city_name($city_id)
+{
+	global $pdo_conn;
+	$pdo_city_name_id = $pdo_conn->prepare("SELECT city_name FROM city_creation WHERE city_id='".$city_id."' ");
+	$pdo_city_name_id->execute();
+	$city_name = $pdo_city_name_id->fetch();
+	return $city_name['city_name'];
+}
 function get_partytype($partytype_id)
 {
 	global $pdo_conn;

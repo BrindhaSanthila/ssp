@@ -38,7 +38,7 @@ error_reporting(0);
 
 
 <div class="col-md-12 header">
-    <h3>Quary Details</h3>
+    <h3>Quary / Crusher Details</h3>
 </div>
 <div class="padd_div">
 <table width="100%" id="table1">
@@ -56,8 +56,13 @@ error_reporting(0);
 <div class="table-responsive">
 <table width="100%" id="table3">
     
+   <tr>
+    <td>Quary / Crusher </td>
+    <td style="font-weight: 100;"> <?php echo $mainlist[0]['quary_crusher']; ?></td>
+    </tr>
     <tr>
-    <td>Quary Name</td>
+    <tr>
+    <td>Quary / Crusher Name</td>
     <td style="font-weight: 100;"> <?php echo $mainlist[0]['quary_name']; ?></td>
     </tr>
     <tr>
@@ -72,7 +77,6 @@ error_reporting(0);
     <td>Status</td>
     <td style="font-weight: 100;"><?php echo $mainlist[0]['active_status']; ?></td>
     </tr>
-
     
 </table>
 </div>

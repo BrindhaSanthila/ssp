@@ -67,6 +67,19 @@ error_reporting(0);
     <tr>
     <td>Address</td>
     <td style="font-weight: 100;"><?php echo $mainlist[0]['address']; ?></td>
+    </tr><tr>
+    <td>Area Name</td>
+    <td style="font-weight: 100;"><?php  $party_area=explode(',',$mainlist[0]['area_name']);
+    foreach ($party_area as $value) {echo get_area_name($value[area_name])." ";
+     	# code...
+     } ?></td>
+    </tr>
+    <tr>
+    <td>City Name</td>
+    <td style="font-weight: 100;"><?php  $party_city=explode(',',$mainlist[0]['city_name']);
+    foreach ($party_city as $value) {echo get_city_name($value[city_name])." ";
+     	# code...
+     } ?></td>
     </tr>
     <tr>
     <td>Party Type</td>

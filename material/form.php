@@ -113,20 +113,54 @@
 								<div class="form-group">
 									   <h5>Alternative of Units</h5>
 									   <div class="controls">
-										 <input type="text" name="alt_unit" id="alt_unit" value="<?php echo $alt_unit ?>" class="form-control" onchange="validation(this.id)"  >
+									   	 <?php
+											$select_unit_1=$pdo_conn->prepare("SELECT * FROM unit_creation");
+											$select_unit_1->execute();
+											$unit_1 = $select_unit_1->fetchAll();
+										?>	
+										<select name="alt_unit" id="alt_unit"  class="form-control select2 item_name" required>
+										<option value="">Select Measurement of Unit</option>
+										<?php 
+										foreach($unit_1 as $value_1)
+										{
+											
+											
+											?>
+											<option value="<?php echo $value_1['unit_id']?>" <?php if($alt_unit == $value_1['unit_id']){ echo "selected";} ?>><?php echo $value_1['unit_name'];?></option>
+											
+											<?php 
+										}
+										?>
+										</select>
 										</div>
 								</div>
 							</div>
 
+						
 							<div class="col-md-12 col-lg-8 ">
 								<div class="form-group">
-									   <h5>Material Production From</h5>
+									   <h5>Material Production From</h5><?php 
+									   $select_quary_1=$pdo_conn->prepare("SELECT * FROM quary_creation where active_status='Active'");
+											$select_quary_1->execute();
+											$quary_1 = $select_quary_1->fetchAll(); ?>
 									   <div class="controls">
-									   <input type="text" name="production_from" id="production_from" value="<?php echo $production_from ?>" class="form-control" onchange="validation(this.id)"  >
+									 	<select name="production_from" id="production_from"  class="form-control"  >
+									 		<option value="">Select</option>
+									   <?php 
+										foreach($quary_1 as $value_1)
+										{
+											
+											
+											?>
+											<option value="<?php echo $value_1['quary_id']?>" <?php if($production_from == $value_1['quary_id']){ echo "selected";} ?>><?php echo $value_1['quary_name'];?></option>
+											
+											<?php 
+										}
+										?>
+									</select>
 										</div>
 								  </div>
 							</div>
-
 							<div class="col-lg-8 col-md-12 ">
 									<h5>Status</h5>
 										<select name="active_status" id="active_status"  class="form-control"  >

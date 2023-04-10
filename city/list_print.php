@@ -15,13 +15,15 @@ include '../inc/header.php';
         <thead>
           <tr class="bold">
           <th class="th_div">#</th>
+           <th class="th_div">Area Name</th>
           <th class="th_div">City Name</th>
+           <th class="th_div">Approximate Km</th>
           <th class="th_div">Status</th>
           </tr>
         </thead>
         <tbody id="rg_ls">
       <?php   
-        $select_purchaseentry = $pdo_conn->prepare("SELECT * FROM city_creation ORDER BY city_name ASC");
+        $select_purchaseentry = $pdo_conn->prepare("SELECT * FROM city_creation ORDER BY city_name Desc");
         $select_purchaseentry->execute();
         $result = $select_purchaseentry->fetchAll();
         $roll_id=1;
@@ -30,7 +32,9 @@ include '../inc/header.php';
           <tr>
           
             <td><?php echo $roll_id;?></td>
+              <td><?php echo get_area_name($value['area_id']);?></td>
             <td><?php echo $value['city_name'];?></td>
+              <td><?php echo $value['apprx_km'];?></td>
             <td><?php echo $value['active_status'];?></td>
           
           </tr>
