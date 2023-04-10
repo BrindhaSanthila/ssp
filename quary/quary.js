@@ -1,3 +1,4 @@
+
 /****************************** INSERT & UPDATE ***************************************/
 function quarycreation_cu(quary_id,action)
 {

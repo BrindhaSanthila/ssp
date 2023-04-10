@@ -1,3 +1,4 @@
+
  <style>
 h5.view_mode{
 	font-weight:bold;

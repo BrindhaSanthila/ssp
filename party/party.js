@@ -1,3 +1,4 @@
+
 /****************************** INSERT & UPDATE ***************************************/
 function party_cu(party_id,action)
 {
